@@ -15,9 +15,6 @@
     "buildRequired": true
   },
   "dataBinding": {
-    "/webapp/view/App.view.xml": {
-      "entitySet": "UNBINDKEY"
-    },
     "/webapp/view/NotFound.view.xml": {
       "entitySet": "UNBINDKEY"
     },
@@ -46,9 +43,9 @@
     "resourceModelName": "i18n"
   },
   "mockpreview": {
-    "mockUri": "",
-    "metadataFilePath": "",
-    "loadJSONFiles": false,
+    "mockUri": "/here/goes/your/serviceurl",
+    "metadataFilePath": "localService/metadata.xml",
+    "loadJSONFiles": true,
     "loadCustomRequests": false,
     "mockRequestsFilePath": ""
   },

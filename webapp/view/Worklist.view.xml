@@ -1,73 +1,6 @@
-<mvc:View
-	controllerName="mcl.controller.Worklist"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.m.semantic"
-	xmlns:footerbar="sap.ushell.ui.footerbar">
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="mcl.controller.Worklist">
 
-	<semantic:FullscreenPage
-		id="page"
-		navButtonPress="onNavBack"
-		showNavButton="true"
-		title="{i18n>worklistViewTitle}">
-		<semantic:content>
-			<Table
-				id="table"
-				width="auto"
-				class="sapUiResponsiveMargin"
-				items="{
-					path: '/BelegkopfSet',
-					sorter: {
-						path: 'BelegkopfID',
-						descending: false
-					}
-				}"
-				noDataText="{worklistView>/tableNoDataText}"
-				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
-				growing="true"
-				growingScrollToLoad="true"
-				updateFinished="onUpdateFinished">
-
-				<headerToolbar>
-					<Toolbar>
-						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
-						<ToolbarSpacer />
-						<SearchField
-							id="searchField"
-							tooltip="{i18n>worklistSearchTooltip}"
-							search="onSearch"
-							width="auto">
-						</SearchField>
-					</Toolbar>
-				</headerToolbar>
-
-				<columns>
-					<Column id="nameColumn">
-						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
-					</Column>
-					<Column id="unitNumberColumn" hAlign="Right">
-						<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
-					</Column>
-				</columns>
-
-				<items>
-					<ColumnListItem
-						type="Navigation"
-						press="onPress">
-						<cells>
-							<ObjectIdentifier
-								title="{BelegkopfID}"/>
-							<ObjectNumber
-								number="{
-									path: 'BelegkopfID',
-									formatter: '.formatter.numberUnit'
-								}"
-								unit="{Belegart}"/>
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
-		</semantic:content>
+	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="true" title="Kopfdaten">
 
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
@@ -78,8 +11,188 @@
 		</semantic:shareInJamAction>
 
 		<semantic:saveAsTileAction>
-			<footerbar:AddBookmarkButton id ="shareTile" title="{worklistView>/saveAsTileTitle}" />
+			<footerbar:AddBookmarkButton id="shareTile" title="{worklistView>/saveAsTileTitle}"/>
 		</semantic:saveAsTileAction>
+
+	<semantic:content>
+
+	    <sap.ui.layout:Grid xmlns:sap.ui.layout="sap.ui.layout" id="__grid0" defaultSpan="XL4 L4 M6 S12">
+
+	        <sap.ui.layout:content>
+
+	            <ObjectIdentifier title="Auslieferung" text="Bind 1" id="Auslieferung"/>
+
+	            <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Belegdatum" id="Belegdatum" text="Bind 2"/>
+
+	            <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Empfänger" text="Bind 3" id="__identifier0_copy2"/>
+
+	            <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Adresse" text="Bind 4" id="Adresse"/>
+
+	            <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Positionen" id="Positionen" text="Bind 5"/>
+
+	            <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Packstücke" text="Bind 6" id="__identifier0_copy5"/></sap.ui.layout:content>
+
+	    </sap.ui.layout:Grid>
+
+	    <IconTabBar selectedKey="__xmlview0--__filter2" id="__bar0">
+
+	        <items>
+
+	            <IconTabFilter text="Scan" icon="sap-icon://product" iconColor="Negative" id="__filter1">
+
+	                <content>
+
+	                    <InputListItem type="Navigation" counter="0" label="Input List Item" id="__item4">
+
+	                        <content>
+
+	                            <Input ariaLabelledBy="__item4-label" value="input" width="100%" id="__input4"/>
+
+	                        </content>
+
+	                    </InputListItem>
+
+	                    <InputListItem type="Navigation" counter="0" label="Input List Item" id="__item5">
+
+	                        <content>
+
+	                            <Input ariaLabelledBy="__item5-label" value="input" width="100%" id="__input5"/>
+
+	                        </content>
+
+	                    </InputListItem>
+
+	                    <InputListItem type="Navigation" counter="0" label="Input List Item" id="__item6">
+
+	                        <content>
+
+	                            <Input ariaLabelledBy="__item6-label" value="input" width="100%" id="__input6"/>
+
+	                        </content>
+
+	                    </InputListItem>
+
+	                    <InputListItem type="Navigation" counter="0" label="Input List Item" id="__item7">
+
+	                        <content>
+
+	                            <Input ariaLabelledBy="__item7-label" value="input" width="100%" id="__input7"/>
+
+	                        </content>
+
+	                    </InputListItem>
+
+	                </content>
+
+	            </IconTabFilter>
+
+	            <IconTabFilter xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" text="Pack" icon="sap-icon://add-product" id="__filter1_copy4" iconColor="Critical">
+
+	                <content>
+
+	                    <Label text="Verpackung auswählen" width="100%" id="__label0"/>
+
+	                    <sap.ui.layout:Grid xmlns:sap.ui.layout="sap.ui.layout" id="__grid2">
+
+	                    <sap.ui.layout:content>
+
+	                        <CheckBox id="__box1"/>
+
+	                        <Image width="140px" height="140px" id="__image2"/>
+
+	                        <CheckBox xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" id="__box1_copy"/>
+
+	                        <Image xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" width="140px" height="140px" id="__image2_copy"/>
+
+	                        <CheckBox xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" id="__box1_copy2"/>
+
+	                        <Image xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" width="140px" height="140px" id="__image2_copy2"/>
+
+	                        <CheckBox xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" id="__box1_copy3"/>
+
+	                        <Image xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" width="140px" height="140px" id="__image2_copy3"/>
+
+	                    </sap.ui.layout:content>
+
+	                    </sap.ui.layout:Grid>
+
+	                </content>
+
+	            </IconTabFilter>
+
+	            <IconTabFilter text="Send" icon="sap-icon://shipping-status" iconColor="Positive" id="__filter2">
+
+	            <content>
+
+	                <sap.ui.layout:Grid xmlns:sap.ui.layout="sap.ui.layout" id="__grid1">
+
+	                <sap.ui.layout:content>
+
+	                    <Image width="140px" height="140px" id="__image4"/>
+
+	                    <ObjectIdentifier title="gewählte Verpackung" text="Text" id="__identifier1"/>
+
+	                    <Text text="Kopftexte" maxLines="0" id="__text126"/>
+
+	                    <Input width="100%" id="__input1"/>
+
+	                </sap.ui.layout:content>
+
+	                </sap.ui.layout:Grid>
+
+	                <sap.ui.layout:Grid xmlns:sap.ui.layout="sap.ui.layout" id="__grid4">
+
+	                    <sap.ui.layout:content>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy9"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy10"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy11"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy12"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy13"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy2"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy3"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy4"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy5"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy6"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy7"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy8"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy14"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy15"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy16"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy17"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy18"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy19"/>
+
+	                        <ObjectIdentifier xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.layout="sap.ui.layout" title="Auslieferung" text="Bind 1" id="Auslieferung_copy20"/></sap.ui.layout:content>
+
+	                </sap.ui.layout:Grid>
+
+	            </content>
+
+	            </IconTabFilter></items>
+
+	    </IconTabBar>
+
+	</semantic:content>
 
 	</semantic:FullscreenPage>
 
