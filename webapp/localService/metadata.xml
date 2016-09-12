@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="MPacktischFiori">
+            <EntityType Name="Packmittel">
+                <Key>
+                    <PropertyRef Name="PackmittelID"/>
+                </Key>
+                <Property Name="PackmittelID" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="Name" Type="Edm.String"/>
+                <Property Name="Bild" Type="Edm.String"/>
+                <Property Name="laenge" Type="Edm.String"/>
+                <Property Name="hoehe" Type="Edm.String"/>
+                <Property Name="breite" Type="Edm.String"/>
+                <Property Name="maxLadungsgewicht" Type="Edm.String"/>
+                <Property Name="maxVolumen" Type="Edm.String"/>
+                <Property Name="eigengewicht" Type="Edm.String"/>
+                <Property Name="eigenvolumen" Type="Edm.String"/>
+                <NavigationProperty FromRole="From_Packmittel" Name="HandlingUnitSet" Relationship="MPacktischFiori.PackmittelHandlingUnit" ToRole="To_HandlingUnit"/>
+            </EntityType>
+            <EntityType Name="Belegkopf">
+                <Key>
+                    <PropertyRef Name="BelegkopfID"/>
+                </Key>
+                <Property Name="BelegkopfID" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="Datum" Type="Edm.DateTime"/>
+                <Property Name="Adresse" Type="Edm.String"/>
+                <Property Name="Belegart" Type="Edm.String"/>
+                <NavigationProperty FromRole="From_Belegkopf" Name="BelegpositionSet" Relationship="MPacktischFiori.BelegkopfBelegposition" ToRole="To_Belegposition"/>
+            </EntityType>
+            <EntityType Name="Belegposition">
+                <Key>
+                    <PropertyRef Name="BelegpositionID"/>
+                </Key>
+                <Property Name="BelegpositionID" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="BelegkopID" Type="Edm.Int16"/>
+                <Property Name="MaterialID" Type="Edm.Int16"/>
+                <NavigationProperty FromRole="To_Belegposition" Name="Belegkopf" Relationship="MPacktischFiori.BelegkopfBelegposition" ToRole="From_Belegkopf"/>
+                <NavigationProperty FromRole="To_Belegposition" Name="HandlingUnit" Relationship="MPacktischFiori.HandlingUnitBelegposition" ToRole="From_HandlingUnit"/>
+                <NavigationProperty FromRole="From_Belegposition" Name="MaterialSet" Relationship="MPacktischFiori.BelegpositionMaterial" ToRole="To_Material"/>
+            </EntityType>
+            <EntityType Name="HandlingUnit">
+                <Key>
+                    <PropertyRef Name="HandlingUnitID"/>
+                </Key>
+                <Property Name="HandlingUnitID" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="ReferenzInternID" Type="Edm.Int16"/>
+                <Property Name="PackmittelID" Type="Edm.String"/>
+                <Property Name="BelegpositionID" Type="Edm.String"/>
+                <NavigationProperty FromRole="From_HandlingUnit" Name="PaketSet" Relationship="MPacktischFiori.HandlingUnitPaket" ToRole="To_Paket"/>
+                <NavigationProperty FromRole="To_HandlingUnit" Name="Packmittel" Relationship="MPacktischFiori.PackmittelHandlingUnit" ToRole="From_Packmittel"/>
+                <NavigationProperty FromRole="From_HandlingUnit" Name="BelegpositionSet" Relationship="MPacktischFiori.HandlingUnitBelegposition" ToRole="To_Belegposition"/>
+            </EntityType>
+            <EntityType Name="Paket">
+                <Key>
+                    <PropertyRef Name="PaketID"/>
+                </Key>
+                <Property Name="PaketID" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="HandlingUnitID" Type="Edm.Int16"/>
+                <Property Name="TCID" Type="Edm.Int16"/>
+                <NavigationProperty FromRole="To_Paket" Name="HandlingUnit" Relationship="MPacktischFiori.HandlingUnitPaket" ToRole="From_HandlingUnit"/>
+            </EntityType>
+            <EntityType Name="Material">
+                <Key>
+                    <PropertyRef Name="MaterialID"/>
+                </Key>
+                <Property Name="MaterialID" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="Name" Type="Edm.String"/>
+                <Property Name="laenge" Type="Edm.String"/>
+                <Property Name="hoehe" Type="Edm.String"/>
+                <Property Name="breite" Type="Edm.String"/>
+                <Property Name="eigengewicht" Type="Edm.String"/>
+                <Property Name="eigenvolumen" Type="Edm.String"/>
+                <NavigationProperty FromRole="To_Material" Name="Belegposition" Relationship="MPacktischFiori.BelegpositionMaterial" ToRole="From_Belegposition"/>
+            </EntityType>
+            <Association Name="BelegkopfBelegposition">
+                <End Multiplicity="1" Role="From_Belegkopf" Type="MPacktischFiori.Belegkopf"/>
+                <End Multiplicity="*" Role="To_Belegposition" Type="MPacktischFiori.Belegposition"/>
+            </Association>
+            <Association Name="HandlingUnitPaket">
+                <End Multiplicity="1" Role="From_HandlingUnit" Type="MPacktischFiori.HandlingUnit"/>
+                <End Multiplicity="1" Role="To_Paket" Type="MPacktischFiori.Paket"/>
+            </Association>
+            <Association Name="PackmittelHandlingUnit">
+                <End Multiplicity="1" Role="From_Packmittel" Type="MPacktischFiori.Packmittel"/>
+                <End Multiplicity="1" Role="To_HandlingUnit" Type="MPacktischFiori.HandlingUnit"/>
+            </Association>
+            <Association Name="HandlingUnitBelegposition">
+                <End Multiplicity="*" Role="From_HandlingUnit" Type="MPacktischFiori.HandlingUnit"/>
+                <End Multiplicity="*" Role="To_Belegposition" Type="MPacktischFiori.Belegposition"/>
+            </Association>
+            <Association Name="BelegpositionMaterial">
+                <End Multiplicity="1" Role="From_Belegposition" Type="MPacktischFiori.Belegposition"/>
+                <End Multiplicity="1" Role="To_Material" Type="MPacktischFiori.Material"/>
+            </Association>
+            <EntityContainer Name="default" m:IsDefaultEntityContainer="true">
+                <EntitySet EntityType="MPacktischFiori.Packmittel" Name="PackmittelSet"/>
+                <EntitySet EntityType="MPacktischFiori.Belegkopf" Name="BelegkopfSet"/>
+                <EntitySet EntityType="MPacktischFiori.Belegposition" Name="BelegpositionSet"/>
+                <EntitySet EntityType="MPacktischFiori.HandlingUnit" Name="HandlingUnitSet"/>
+                <EntitySet EntityType="MPacktischFiori.Paket" Name="PaketSet"/>
+                <EntitySet EntityType="MPacktischFiori.Material" Name="MaterialSet"/>
+                <AssociationSet Association="MPacktischFiori.BelegkopfBelegposition" Name="BelegkopfBelegpositionSet">
+                    <End EntitySet="BelegkopfSet" Role="From_Belegkopf"/>
+                    <End EntitySet="BelegpositionSet" Role="To_Belegposition"/>
+                </AssociationSet>
+                <AssociationSet Association="MPacktischFiori.HandlingUnitPaket" Name="HandlingUnitPaketSet">
+                    <End EntitySet="HandlingUnitSet" Role="From_HandlingUnit"/>
+                    <End EntitySet="PaketSet" Role="To_Paket"/>
+                </AssociationSet>
+                <AssociationSet Association="MPacktischFiori.PackmittelHandlingUnit" Name="PackmittelHandlingUnitSet">
+                    <End EntitySet="PackmittelSet" Role="From_Packmittel"/>
+                    <End EntitySet="HandlingUnitSet" Role="To_HandlingUnit"/>
+                </AssociationSet>
+                <AssociationSet Association="MPacktischFiori.HandlingUnitBelegposition" Name="HandlingUnitBelegpositionSet">
+                    <End EntitySet="HandlingUnitSet" Role="From_HandlingUnit"/>
+                    <End EntitySet="BelegpositionSet" Role="To_Belegposition"/>
+                </AssociationSet>
+                <AssociationSet Association="MPacktischFiori.BelegpositionMaterial" Name="BelegpositionMaterialSet">
+                    <End EntitySet="BelegpositionSet" Role="From_Belegposition"/>
+                    <End EntitySet="MaterialSet" Role="To_Material"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
