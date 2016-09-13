@@ -1,4 +1,4 @@
-<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="mcl.controller.Worklist">
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="mcl.controller.Packtisch">
 
 	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="true" title="Kopfdaten">
 
@@ -42,7 +42,7 @@
 
 	                <content>
 
-	                    <InputListItem type="Navigation" counter="0" label="Input List Item" id="__item4">
+	                    <InputListItem type="Navigation" counter="0" label="Barcodescan" id="Barcodescaninputlabel">
 
 	                        <content>
 
@@ -52,7 +52,7 @@
 
 	                    </InputListItem>
 
-	                    <InputListItem type="Navigation" counter="0" label="Input List Item" id="__item5">
+	                    <InputListItem type="Navigation" counter="0" label="Auslieferung" id="auslieferunginputlabel">
 
 	                        <content>
 
@@ -62,7 +62,7 @@
 
 	                    </InputListItem>
 
-	                    <InputListItem type="Navigation" counter="0" label="Input List Item" id="__item6">
+	                    <InputListItem type="Navigation" counter="0" label="Transport" id="Transportinputlabel">
 
 	                        <content>
 
@@ -72,7 +72,7 @@
 
 	                    </InputListItem>
 
-	                    <InputListItem type="Navigation" counter="0" label="Input List Item" id="__item7">
+	                    <InputListItem type="Navigation" counter="0" label="SD-Nummer" id="sdnummerinputlabel">
 
 	                        <content>
 

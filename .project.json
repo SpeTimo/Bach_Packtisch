@@ -21,9 +21,6 @@
     "/webapp/view/ObjectNotFound.view.xml": {
       "entitySet": "UNBINDKEY"
     },
-    "/webapp/view/Worklist.view.xml": {
-      "entitySet": "BelegkopfSet"
-    },
     "/webapp/view/Object.view.xml": {
       "entitySet": "BelegkopfSet"
     }

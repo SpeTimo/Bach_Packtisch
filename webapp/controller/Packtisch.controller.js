@@ -8,7 +8,7 @@ sap.ui.define([
 	], function (BaseController, JSONModel, History, formatter, Filter, FilterOperator) {
 		"use strict";
 
-		return BaseController.extend("mcl.controller.Worklist", {
+		return BaseController.extend("mcl.controller.Packtisch", {
 
 			formatter: formatter,
 
